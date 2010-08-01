@@ -1,0 +1,17 @@
+NAME
+    Number::Extreme -
+
+SYNOPSIS
+      use Number::Extreme;
+
+DESCRIPTION
+    Number::Extreme is
+
+AUTHOR
+    Chia-liang Kao <clkao@clkao.org>
+
+LICENSE
+    This library is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
+
+SEE ALSO
