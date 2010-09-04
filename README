@@ -15,10 +15,10 @@ SYNOPSIS
       $highest_high->test($_) for @objects;
 
       # now you have the highest high
-      warn $highest_high
+      warn $highest_high;
 
       # and the object of that high
-      warn $highest_high->current->{id}
+      warn $highest_high->current->{id};
 
 DESCRIPTION
     Number::Extreme provides simple utility for a common task: tracking
