@@ -11,4 +11,7 @@ $highest_high->test($_) for @objects;
 is($highest_high->current_value, 100);
 is_deeply($highest_high->current, { high => 100 });
 
+is($highest_high, 100);
+
+
 done_testing;

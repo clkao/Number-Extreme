@@ -4,6 +4,11 @@ use strict;
 use 5.008_001;
 our $VERSION = '0.01';
 
+use overload
+    '"0+"' => sub { $_[0]{current_value} },
+    '""'   => sub { $_[0]{current_value} },
+    fallback => 1;
+
 sub new {
     my ($class, %args) = @_;
     bless \%args, __PACKAGE__;
