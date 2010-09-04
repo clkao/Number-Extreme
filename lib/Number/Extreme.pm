@@ -2,7 +2,7 @@ package Number::Extreme;
 
 use strict;
 use 5.008_001;
-our $VERSION = '0.01';
+our $VERSION = '0.29';
 
 use overload
     '"0+"' => sub { $_[0]{current_value} },
@@ -74,15 +74,58 @@ __END__
 
 =head1 NAME
 
-Number::Extreme -
+Number::Extreme - Helper for keeping track of extreme values of objects
 
 =head1 SYNOPSIS
 
   use Number::Extreme;
 
+  # a bunch of objects with the "high" attribute.
+  my $id = 0;
+  my @objects = map { { id => $id++, high => $_ } } shuffle (1..100);
+
+  # create a highest-high tracker, which extracts "high" from given objects
+  my $highest_high = Number::Extreme->max(sub { $_->{high} });
+
+  # test the values
+  $highest_high->test($_) for @objects;
+
+  # now you have the highest high
+  warn $highest_high;
+
+  # and the object of that high
+  warn $highest_high->current->{id};
+
 =head1 DESCRIPTION
 
-Number::Extreme is
+Number::Extreme provides simple utility for a common task: tracking
+highest or lowest value of an attribute of objects, while keeping
+track of which object is of the extreme value.
+
+=head2 METHODS
+
+=over
+
+=item $class->max($extractor)
+
+=item $class->min($extractor)
+
+Helper constructors for creating max/min tracker.  C<$extractor> takes
+C<$_> as the object to be tested, and returns the attribute to be
+compared.
+
+=item $class->amax($array)
+
+=item $class->amin($array)
+
+Helper constructors for tracking max/min values of an
+arrayref. C<test()> should be called with the array index.
+
+=item $obj->test($o)
+
+Update the tracker with new incoming object.
+
+=back
 
 =head1 AUTHOR
 
