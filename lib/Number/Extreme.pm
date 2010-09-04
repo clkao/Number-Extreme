@@ -34,6 +34,16 @@ sub min {
     );
 }
 
+sub amax {
+    my ($class, $array) = @_;
+    $class->max(sub { $array->[$_] });
+}
+
+sub amin {
+    my ($class, $array) = @_;
+    $class->min(sub { $array->[$_] });
+}
+
 sub test {
     my ($self, $object) = @_;
     local $_ = $object;
